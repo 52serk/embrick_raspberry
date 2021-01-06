@@ -48,10 +48,10 @@
 					#clock-cells = <0>;
 					clock-frequency = <1843200>;
 				};
-			};		
+			};
 		};
 	};
-	
+
 	fragment@2 {
 		target = <&aux>;
 		__overlay__ {
@@ -72,6 +72,5 @@
 
     __overrides__ {
       int_pin = <&sc16is740>,"interrupts:0";
-      xtal = <&sc16is740_clk>,"clock-frequency:0";
     };
 };
