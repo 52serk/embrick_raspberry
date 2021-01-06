@@ -48,11 +48,7 @@
 					#clock-cells = <0>;
 					clock-frequency = <1843200>;
 				};
-			};
-			
-			__overrides__ {
-				int_pin = <&sc16is740>,"interrupts:0";
-				xtal = <&sc16is740_clk>,"clock-frequency:0";
+			};		
 		};
 	};
 	
@@ -76,5 +72,6 @@
 
     __overrides__ {
       int_pin = <&sc16is740>,"interrupts:0";
+      xtal = <&sc16is740_clk>,"clock-frequency:0";
     };
 };
