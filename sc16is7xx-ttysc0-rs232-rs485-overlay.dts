@@ -49,28 +49,21 @@
 					clock-frequency = <1843200>;
 				};
 			};
+			
+			__overrides__ {
+				int_pin = <&sc16is740>,"interrupts:0";
+				xtal = <&sc16is740_clk>,"clock-frequency:0";
 		};
 	};
 	
 	fragment@2 {
-		target = "/";
-		__overlay__{
-			sc16is740_clk: sc16is740_spi0_0_clk {
-				compatible = "fixed-clock";
-				#clock-cells = <0>;
-				clock-frequency = <1843200>;
-			};
-		};
-	};
-	
-	fragment@3 {
 		target = <&aux>;
 		__overlay__ {
 			status = "okay";
 		};
 	};
 	
-	fragment@4 {
+	fragment@3 {
         	target = <&spi0>;
         	__overlay__ {
             		status = "okay";
