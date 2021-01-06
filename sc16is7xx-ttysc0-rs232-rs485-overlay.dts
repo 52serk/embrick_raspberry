@@ -42,16 +42,21 @@
 				#gpio-cells = <2>;
 				spi-max-frequency = <4000000>;
 				status = "okay";
-
-				sc16is740_clk: sc16is740_clk {
-					compatible = "fixed-clock";
-					#clock-cells = <0>;
-					clock-frequency = <1843200>;
-				};
 			};
 		};
 	};
-
+	
+	fragment@4 {
+		target-path = "/";
+		__overlay__{
+			sc16is740_clk: sc16is740_clk {
+				compatible = "fixed-clock";
+				#clock-cells = <0>;
+				clock-frequency = <1843200>;
+			};
+		};
+	};
+	
 	fragment@2 {
 		target = <&aux>;
 		__overlay__ {
