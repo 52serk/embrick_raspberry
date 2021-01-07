@@ -111,7 +111,7 @@ else
     exit 0
 fi
 
-apt-get install linux-headers
+apt-get update  && apt-get install linux-headers
 
 apt-get update -y
 apt-get -y install libncurses5-dev bc build-essential raspberrypi-kernel-headers device-tree-compiler gcc-$GCCVER g++-$GCCVER
