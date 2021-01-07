@@ -151,14 +151,15 @@ if (whiptail --title "emPC-A/RPI3 Installation Script" --yesno "$OPTIMIZATIONS" 
  # TODO: create patches 
  
  sed -i 's/MODULE_DESCRIPTION("/MODULE_DESCRIPTION("optimized for CAE_Z-RaspberryBrick-1#-RB_0#: /' spi-bcm2835.c
+ sed -i 's/static unsigned int polling_limit_us = 30;/static unsigned int polling_limit_us = 200;/g' spi-bcm2835.c
  sed -i 's/MODULE_DESCRIPTION("/MODULE_DESCRIPTION("optimized for CAE_Z-RaspberryBrick-1#-RB_0#: /' mcp251x.c
  sed -i 's/MODULE_DESCRIPTION("/MODULE_DESCRIPTION("optimized for CAE_Z-RaspberryBrick-1#-RB_0#k: /' sc16is7xx.c
  
  
  # SPI driver
  
- echo -e "$INFO INFO: patching spi-bcm2835.c with higher polling limit $NC" 1>&2
- patchfile spi-bcm2835.c "static unsigned int polling_limit_us." "static unsigned int polling_limit_us = 200;"
+ #echo -e "$INFO INFO: patching spi-bcm2835.c with higher polling limit $NC" 1>&2
+ #patchfile spi-bcm2835.c "static unsigned int polling_limit_us." "static unsigned int polling_limit_us = 200;"
  #patchfile spi-bcm2835.c "#define BCM2835_SPI_POLLING_LIMIT_US.*" "#define BCM2835_SPI_POLLING_LIMIT_US (200)"
  
  echo -e "$INFO INFO: patching spi-bcm2835 with RT priority $NC" 1>&2
