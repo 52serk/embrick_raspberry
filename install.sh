@@ -157,7 +157,8 @@ if (whiptail --title "emPC-A/RPI3 Installation Script" --yesno "$OPTIMIZATIONS" 
  
  # SPI driver
  
- #echo -e "$INFO INFO: patching spi-bcm2835.c with higher polling limit $NC" 1>&2
+ echo -e "$INFO INFO: patching spi-bcm2835.c with higher polling limit $NC" 1>&2
+ patchfile spi-bcm2835.c "static unsigned int polling_limit_us." "static unsigned int polling_limit_us = 200;"
  #patchfile spi-bcm2835.c "#define BCM2835_SPI_POLLING_LIMIT_US.*" "#define BCM2835_SPI_POLLING_LIMIT_US (200)"
  
  echo -e "$INFO INFO: patching spi-bcm2835 with RT priority $NC" 1>&2
@@ -395,8 +396,6 @@ fi
 
 
 cd /
-
-echo "200" > /sys/module/spi_bcm2835/parameters/polling_limit_us
 
 if (whiptail --title "emPC-A/RPI3 Installation Script" --yesno "Installation completed! reboot required\n\nreboot now?" 12 60) then
 
