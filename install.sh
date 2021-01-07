@@ -135,7 +135,8 @@ cd /tmp/embrick_raspberry
 # compile driver modules
 wget -nv https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git/plain/drivers/net/can/spi/mcp251x.c?h=v$VERSION.$PATCHLEVEL.$SUBLEVEL -O mcp251x.c
 wget -nv $REPORAW/src/sc16is7xx.c -O sc16is7xx.c
-wget -nv https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git/plain/drivers/spi/spi-bcm2835.c?h=v$VERSION.$PATCHLEVEL.$SUBLEVEL -O spi-bcm2835.c
+wget -nv $REPORAW/src/spi-bcm2835.c -O spi-bcm2835.c
+#wget -nv https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git/plain/drivers/spi/spi-bcm2835.c?h=v$VERSION.$PATCHLEVEL.$SUBLEVEL -O spi-bcm2835.c
 
 OPTIMIZATIONS="Optimizations of mainline drivers are available:\n
 - SPI driver (spi-bcm2835.c)
@@ -144,6 +145,7 @@ OPTIMIZATIONS="Optimizations of mainline drivers are available:\n
 - SocketCan driver (mcp251x.c)
  - higher ost delay timeout to prevent can detection problems after soft-reboots\n
  - use low level interrupts
+ 
 \nDo you want these optimizations?"
 
 if (whiptail --title "emPC-A/RPI3 Installation Script" --yesno "$OPTIMIZATIONS" 24 60) then
@@ -151,7 +153,6 @@ if (whiptail --title "emPC-A/RPI3 Installation Script" --yesno "$OPTIMIZATIONS" 
  # TODO: create patches 
  
  sed -i 's/MODULE_DESCRIPTION("/MODULE_DESCRIPTION("optimized for CAE_Z-RaspberryBrick-1#-RB_0#: /' spi-bcm2835.c
- sed -i 's/static unsigned int polling_limit_us = 30;/static unsigned int polling_limit_us = 200;/g' spi-bcm2835.c
  sed -i 's/MODULE_DESCRIPTION("/MODULE_DESCRIPTION("optimized for CAE_Z-RaspberryBrick-1#-RB_0#: /' mcp251x.c
  sed -i 's/MODULE_DESCRIPTION("/MODULE_DESCRIPTION("optimized for CAE_Z-RaspberryBrick-1#-RB_0#k: /' sc16is7xx.c
  
