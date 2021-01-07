@@ -127,9 +127,9 @@ else
 fi
 
 
-rm -rf /tmp/embrick_raspberry_drivers
-mkdir -p /tmp/embrick_raspberry_drivers
-cd /tmp/embrick_raspberry_drivers
+rm -rf /tmp/embrick_raspberry
+mkdir -p /tmp/embrick_raspberry
+cd /tmp/embrick_raspberry
 
 
 # compile driver modules
