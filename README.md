@@ -25,7 +25,7 @@ Install one of the listed RASPBIAN operating system versions from below:
 ```
 sudo bash
 cd /tmp
-wget https://raw.githubusercontent.com/janztec/empc-arpi3-linux-drivers/master/install.sh -O install.sh
+wget https://raw.githubusercontent.com/52serk/embrick_raspberry/main/install.sh -O install.sh
 bash install.sh
 ```
 
